@@ -10,6 +10,8 @@ class AirplanesController < ApplicationController
   # GET /airplanes/1
   # GET /airplanes/1.json
   def show
+    @airplane = Airplane.find(params[:id])
+    render :json => @airplane
   end
 
   # GET /airplanes/new
