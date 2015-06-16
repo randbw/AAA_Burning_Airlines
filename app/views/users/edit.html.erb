@@ -1,6 +1,15 @@
 <h1>Editing User</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+
+<h2>Reservations</h2>
+<% @user.reservations.each do |r| %>
+  <% flight = Flight.find r.flight_id %>
+  <h5><%= flight.flight_number %> <%= flight.origin %> <%= flight.destination %></h5>
+<%= link_to('Cancel Booking.', user_reservation_path(id: r.id, user_id: @user.id), :method => 'delete', :data => {:confirm => 'Are you sure you want to cancel?'} ) %>
+<% end %>
+
+
+<%= link_to 'Back', root_path %>
+
+<%= render 'form' %>

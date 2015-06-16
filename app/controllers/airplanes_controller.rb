@@ -30,7 +30,7 @@ class AirplanesController < ApplicationController
 
     respond_to do |format|
       if @airplane.save
-        format.html { redirect_to @airplane, notice: 'Airplane was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Airplane was successfully created.' }
         format.json { render :show, status: :created, location: @airplane }
       else
         format.html { render :new }
@@ -71,6 +71,6 @@ class AirplanesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def airplane_params
-      params.require(:airplane).permit(:name, :rows, :column)
+      params.require(:airplane).permit(:name, :rows, :columns)
     end
 end
