@@ -8,9 +8,9 @@ app.AppView = Backbone.View.extend({
         var appHTML = $('#appTemplate').html();
         this.$el.html(appHTML)
 
-        this.collection.each(function(post) {
-            var postListView = new app.PostListView({model: post});
-            postListView.render();
+        this.collection.each(function(flight) {
+            var flightListView = new app.FlightListView({model: flight});
+            flightListView.render();
         });
     }
 
