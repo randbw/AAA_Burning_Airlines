@@ -1,8 +1,4 @@
-<h1>Editing User</h1>
-
-
-
-<h2>Reservations</h2>
+<h2 id="navHead">Reservations</h2>
 <% @user.reservations.each do |r| %>
   <% flight = Flight.find r.flight_id %>
   <h5><%= flight.flight_number %> <%= flight.origin %> <%= flight.destination %></h5>
@@ -12,4 +8,5 @@
 
 <%= link_to 'Back', root_path %>
 
+<h1>Editing User</h1>
 <%= render 'form' %>
