@@ -1,2 +1,23 @@
-<h1>Pages#landing</h1>
-<p>Find me in app/views/pages/landing.html.erb</p>
+<h1>burningAir AAA</h1>
+
+  <div id="main"></div>
+
+
+  <script id="appTemplate" type="text/template">
+    <h2>Recent Flights</h2>
+    <ul id="flights"></ul>
+  </script>
+
+ <script id="flightListTemplate" type="text/template">
+    <h3>{{ flight_number }}</h3>
+    <h3>{{ airplane_id }}</h3>
+    <h3>Origin: {{ origin }}</h3>
+    <h3>Destination: {{ destination }}</h3>
+    <h3>Date: {{ date }} </h3>
+  </script>
+
+  <script id="flightTemplate" type="text/template">
+    <h3>{{ flight_number }}</h3>
+    <h5>{{ passengers }}</h5>
+    <div id="seats"></div>
+</script>
