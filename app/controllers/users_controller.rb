@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_if_admin, :only => [:index]
   # GET /users
   # GET /users.json
   def index
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
   end
 
   # GET /users/new
@@ -69,6 +70,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password_digest, :admin)
+      params.require(:user).permit(:email, :password_digest)
+    end
+
+    def check_if_admin
+      redirect_to root_path unless @current_user.present? && @current_user.admin?
     end
 end

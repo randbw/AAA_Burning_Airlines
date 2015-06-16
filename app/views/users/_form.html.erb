@@ -13,16 +13,15 @@
 
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
     <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
+    <%= f.password_field :password_digest %> <br>
+    <%= f.label :password_confirmation %> <br>
+    <%= f.password_field :password_confirmation %>
   </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
