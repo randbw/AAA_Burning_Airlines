@@ -10,7 +10,6 @@ app.FlightView = Backbone.View.extend({
     var flightHTML = _.template(flightTemplate);
     this.$el.html(flightHTML(this.model.toJSON()));
     view = this
-    this.addTable();
 
   },
 
