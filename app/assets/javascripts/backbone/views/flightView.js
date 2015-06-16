@@ -21,24 +21,24 @@ app.FlightView = Backbone.View.extend({
       var columns = airplane.get("columns");
       var $seats = $('#seats');
         
-      var table = document.createElement('TABLE');
-      table.border='1';
+      var $table = $('<table/>');
+      $table.attr('border','1');
       
-      var tableBody = document.createElement('TBODY');
-      table.appendChild(tableBody);
+      var $tableBody = $('<TBODY/>')
+      $table.append($tableBody)
         
       for (var i = 0; i < rows; i++){
-         var tr = document.createElement('TR');
-         tableBody.appendChild(tr);
+        var $tr = $('<tr/>')
+         $tableBody.append($tr);
          
          for (var j = 0; j < columns; j++){
-             var td = document.createElement('TD');
-             td.width='75';
-             td.appendChild(document.createTextNode("Cell " + i + "," + j));
-             tr.appendChild(td);
+            var $td = $('<td/>');
+            $td.attr('width','75');
+            $td.html("Cell " + i + "," + j);
+            $td.appendTo($tr)
          }
       }
-      $seats.append(table); 
+      $seats.append($table); 
 
     });   
   }
