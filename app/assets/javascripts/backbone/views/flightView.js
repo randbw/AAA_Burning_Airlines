@@ -12,7 +12,7 @@ app.FlightView = Backbone.View.extend({
     var flightTemplate = $('#flightTemplate').html();
     var flightHTML = _.template(flightTemplate);
     this.$el.html(flightHTML(this.model.toJSON()));
-    view = this
+    view = this;
     this.addTable();
   },
 
@@ -26,8 +26,8 @@ app.FlightView = Backbone.View.extend({
       var $table = $('<table/>');
       $table.attr('border','1');
       
-      var $tableBody = $('<TBODY/>')
-      $table.append($tableBody)
+      var $tableBody = $('<TBODY/>');
+      $table.append($tableBody);
         
       for (var i = 0; i < rows; i++){
         var $tr = $('<tr/>');
@@ -47,6 +47,7 @@ app.FlightView = Backbone.View.extend({
   bookSpot: function(e) {
     var id = $(e.toElement).attr('id');
     console.log(id);
+
   }
 
 });
