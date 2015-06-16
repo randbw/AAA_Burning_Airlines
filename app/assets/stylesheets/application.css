@@ -13,13 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
 html{
   text-align: center;
 }
 
-#seats {
+#seats table{
   margin: 0px auto;
 }
+
 nav li {
   list-style-type: none;
   display: inline;
@@ -35,6 +37,7 @@ nav li {
   position:fixed;
   top:0px;
 }
+
 
 
 
