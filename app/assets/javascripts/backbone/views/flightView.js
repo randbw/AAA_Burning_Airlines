@@ -12,56 +12,39 @@ app.FlightView = Backbone.View.extend({
     view = this
 
   },
-  tablecreate: function () {
-    var seats = $('#seats');
-    var rows = '';
-    var tbl = document.createElement('table');
-    tbl.style.width = '100%';
-    tbl.setAttribute('border','1');
-    var tbdy = document.createElement('tbody');
-    for (var i=0; i<3; i++) {
-        var tr = document.createElement('tr');
-        for ( var j=0; j<2; j++) {
-            if ( i==2 && j==1 ) {
-                    break
-                     } else {
-            var td = document.createElement( 'td' );
-            td.appendChild( document.createTextNode( '\u0020' ) );
-            i==1 && j==1?td.setAttribute('rowSpan','2'):null;
-            tr.appendChild(td)
-            }
-        }
-        tbdy.appendChild(tr);
-    }
-    tbl.appendChild(tbdy);
-    body.appendChild(tbl)
-}
 
-  // events: {
-  //   'click button': 'submitSeat'
-  // },
+  addTable: function () {
+    var airplane = new app.Airplane({ id: this.model.get('airplane_id') });
+    console.log( this.model.get('airplane_id') );
 
-  // submitSeat: function(e) {
-  //   e.preventDefault();
+    airplane.fetch().done( function () {
+      console.log(airplane)
 
-  //   var author = $('#author').val();
-  //   var content = $('#content').val();
-
-  //   $('#author, #content').val('') //Reset form for reuse
-
-  //   var seat = new app.Seat({
-  //     author: author,
-  //     content: content,
-  //     flight_id: this.model.get('id')
-  //   });
-  //   var view = this
-  //   seat.save().done(function () {
-  //     view.seat.fetch();
-  //   });
-  //   // this.comments.add(comment)
-
-  // }
+      var rows = airplane.get("rows");
+      var columns = airplane.get("columns");
+      var $seats = $('#seats');
+        
+      var table = document.createElement('TABLE');
+      table.border='1';
+      
+      var tableBody = document.createElement('TBODY');
+      table.appendChild(tableBody);
+        
+      for (var i = 0; i < rows; i++){
+         var tr = document.createElement('TR');
+         tableBody.appendChild(tr);
+         
+         for (var j = 0; j < columns; j++){
+             var td = document.createElement('TD');
+             td.width='75';
+             td.appendChild(document.createTextNode("Cell " + i + "," + j));
+             tr.appendChild(td);
+         }
+      }
+      $seats.append(table); 
 
 
 
+    });   
+  }
 });
