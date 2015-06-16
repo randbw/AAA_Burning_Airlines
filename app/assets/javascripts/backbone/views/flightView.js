@@ -56,10 +56,13 @@ app.FlightView = Backbone.View.extend({
     indexOfUnderscore = id.indexOf('_');
     indexOfIdEnd = 2;
     row = id.slice(indexOfIdEnd,indexOfUnderscore);
-    console.log(row);
     idLength = id.length;
     column = id.slice(indexOfUnderscore + 1,idLength);
-    console.log(column);
+
+    // Need to get user_id. AJAX maybe?
+    // $.ajax({
+    //   url: 
+    // })
 
     res = new app.Reservation({
       row: row,
