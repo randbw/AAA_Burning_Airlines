@@ -45,8 +45,15 @@ app.FlightView = Backbone.View.extend({
   },
 
   bookSpot: function(e) {
+
     var id = $(e.toElement).attr('id');
-    console.log(id);
+    indexOfUnderscore = id.indexOf('_');
+    indexOfIdEnd = 2;
+    row = id.slice(indexOfIdEnd,indexOfUnderscore);
+    console.log(row);
+    idLength = id.length;
+    column = id.slice(indexOfUnderscore + 1,idLength);
+    console.log(column);
 
   }
 
