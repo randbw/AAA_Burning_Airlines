@@ -4,20 +4,20 @@ var app = app || {}
 app.AppRouter = Backbone.Router.extend({
     routes: {
         '': 'index',
-        'posts/:id': 'viewPost'
+        'flights/:id': 'viewFlight'
     },
 
     index: function() {
-        var appView = newew app.AppView({
-            collection: app.blogPosts
+        var appView = new app.AppView({
+            collection: app.burningFlights
         });
         appView.render();
     },
 
-    viewPost: function(id) {
-        app.post = app.blogPosts.get(id);
-        app.postView = new app.PostView({model : app.post})
-        app.postView.render();
+    viewFlight: function(id) {
+        app.flight = app.burningFlights.get(id);
+        app.flightView = new app.FlightView({model : app.flight})
+        app.flightView.render();
     }
 
 });
