@@ -56,8 +56,15 @@ app.FlightView = Backbone.View.extend({
     column = id.slice(indexOfUnderscore + 1,idLength);
     console.log(column);
 
-  }
+    var res = new app.Reservation({
+      row: row,
+      column: column,
+      flight_id: this.model.get('id'),
+      user_id: 0 // don't know how to get this yet
+    })
 
+
+  }
 });
 
 
