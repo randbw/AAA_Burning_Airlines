@@ -50,4 +50,8 @@ Rails.application.routes.draw do
   
   resources :flights
 
+  get '/login' => 'session#new'
+  post '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
+
 end
