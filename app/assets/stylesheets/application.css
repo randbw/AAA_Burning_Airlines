@@ -13,8 +13,29 @@
  *= require_tree .
  *= require_self
  */
-
+html{
+  text-align: center;
+}
 
 #seats {
   margin: 0px auto;
 }
+nav li {
+  list-style-type: none;
+  display: inline;
+  margin-right: 10px;
+}
+
+.navHead{
+  height:50px;
+  background:#F0F0F0;     
+  border:1px solid #CCC;
+  margin:0px auto;
+  width:100%;
+  position:fixed;
+  top:0px;
+}
+
+
+
+
