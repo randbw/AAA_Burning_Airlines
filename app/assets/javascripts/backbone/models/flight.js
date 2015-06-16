@@ -6,11 +6,7 @@ var app = app || {}
 //
 //
 app.Flight = Backbone.Model.extend({
-    urlRoot: '/flights',
-    defaults: {
-        name: 'Unnamed Flight',
-        passengers: 50
-    }
+    urlRoot: '/flights'
 });
 
 
