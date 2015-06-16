@@ -46,6 +46,7 @@ app.FlightView = Backbone.View.extend({
 
   bookSpot: function(e) {
 
+    // Retrieve row and column for reservation creation
     var id = $(e.toElement).attr('id');
     indexOfUnderscore = id.indexOf('_');
     indexOfIdEnd = 2;
