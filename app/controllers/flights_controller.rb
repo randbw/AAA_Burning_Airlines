@@ -11,6 +11,12 @@ class FlightsController < ApplicationController
     end
   end
 
+  def reservations
+    @flight = Flight.find(params[:id])
+    @reservations = @flight.reservations
+    render :json => @reservations
+  end
+
   # GET /flights/1
   # GET /flights/1.json
   def show

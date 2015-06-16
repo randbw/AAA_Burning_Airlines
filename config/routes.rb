@@ -39,6 +39,9 @@
 Rails.application.routes.draw do
 
   root :to => 'pages#landing'
+  
+  get 'flights/:id/reservations/' ,to: 'flights#reservations'
+
 
   resources :users do
     resources :reservations
