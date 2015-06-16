@@ -1,5 +1,5 @@
 var app = app || {};
-var res
+var res;
 app.FlightView = Backbone.View.extend({
 
   el: '#main',
@@ -18,10 +18,8 @@ app.FlightView = Backbone.View.extend({
 
   addTable: function () {
     var airplane = new app.Airplane({ id: this.model.get('airplane_id') });
-    console.log( this.model.get('airplane_id') );
 
     airplane.fetch().done( function () {
-      console.log(airplane)
 
       var rows = airplane.get("rows");
       var columns = airplane.get("columns");
@@ -45,14 +43,18 @@ app.FlightView = Backbone.View.extend({
          }
       }
       $seats.append($table); 
-
     });   
   },
   
   bookSpot: function(e) {
+    // retrieve id of clicked cell
+    var id = $(e.toElement).attr('id');
+
+    // changes clicked cell's class to unavailable
+    $('#'+ id).attr('class','unavailable');
+    // console.log($(e.toElement).attr('class'));
 
     // Retrieve row and column for reservation creation
-    var id = $(e.toElement).attr('id');
     indexOfUnderscore = id.indexOf('_');
     indexOfIdEnd = 2;
     row = parseInt(id.slice(indexOfIdEnd,indexOfUnderscore));
