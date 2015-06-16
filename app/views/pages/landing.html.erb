@@ -24,7 +24,7 @@
 
       <div>
         <label for="date">Date:</label><br>
-        <input type="date" id="date" value="<%=Date.today%>"></input>
+        <input type="date" id="date" value="<%=Date.today.to_date.to_s(:db)%>"></input>
       </div>
 
       <button id="Search">Search</button>
@@ -39,7 +39,7 @@
 
  <script id="flightListTemplate" type="text/template">
   <div class="flightView">
-    <h3><div class="aleft flightInfo">{{ origin }}  <span> to </span>  {{ destination }} {{ date }}</div><div class="aright flightInfo"><span>Flight Number:  {{ flight_number }}</span></div></h3>
+    <h3><div class="aleft flightInfo">{{ origin }}  <span> to </span>  {{ destination }} {{ date }} {{ time }}</div><div class="aright flightInfo"><span>Flight Number:  {{ flight_number }}</span></div></h3>
     
     </div>
   </script>
@@ -47,8 +47,10 @@
   <script id="flightTemplate" type="text/template">
     <h3>{{ flight_number }}</h3>
     <div id="seats"></div>
+  </script>
+  <%if @current_user.present? %>
     <script type="text/javascript" >
- <!--var currentUser = <%= @current_user.id || 'null' %>; -->
-</script>
-</script>
+    var currentUser = <%= @current_user.id || 'null' %>; 
+    </script>
+  <% end %>
 

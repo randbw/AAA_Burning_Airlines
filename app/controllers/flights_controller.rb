@@ -37,7 +37,8 @@ class FlightsController < ApplicationController
   # POST /flights.json
   def create
     @flight = Flight.new(flight_params)
-
+    @flight.date = @flight.date.to_date.to_s(:db)
+    raise params.inspect
     respond_to do |format|
       if @flight.save
         format.html { redirect_to root_path, notice: 'Flight was successfully created.' }
@@ -52,6 +53,7 @@ class FlightsController < ApplicationController
   # PATCH/PUT /flights/1
   # PATCH/PUT /flights/1.json
   def update
+    @flight.date = @flight.date.to_date.to_s(:db)
     respond_to do |format|
       if @flight.update(flight_params)
         format.html { redirect_to @flight, notice: 'Flight was successfully updated.' }
@@ -81,6 +83,6 @@ class FlightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flight_params
-      params.require(:flight).permit(:flight_number, :airplane_id, :origin, :destination, :date)
+      params.require(:flight).permit(:flight_number, :airplane_id, :origin, :destination, :date, :time)
     end
 end

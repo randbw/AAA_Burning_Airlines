@@ -15,6 +15,14 @@ app.FlightListView = Backbone.View.extend({
     $('#flights').append(this.$el);
   },
 
+  search: function() {
+    $('#flights').html('')
+    var flightListTemplate = $('#flightListTemplate').html();
+    var flightListHTML = _.template(flightListTemplate)
+    this.$el.html(flightListHTML(this.model.toJSON()));
+    $('#flights').append(this.$el);
+  },
+
   showFlight : function() {
 
     app.router.navigate('flights/' + this.model.get('id'), true);
@@ -33,13 +41,18 @@ $('#Search').on('click', function(e){
     var date = $('#date').val();
      // Reset the form for re-use.
 
-    var flight = new app.Flight({
+    var flight = new app.Flights
+    flight.fetch().done(function() {
+    var searched = flight.where({
       origin: origin,
       destination: destination,
       date: date
-    });
-    flight.fetch()
+      });
+    for (var i = 0; i < searched.length; i+=1){   
+    var flightListView = new app.FlightListView({model: searched[i]});
+    flightListView.search();
     test = flight
+  }
   })
-
+  })
 });
