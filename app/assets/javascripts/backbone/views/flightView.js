@@ -15,7 +15,11 @@ app.FlightView = Backbone.View.extend({
 
   addTable: function () {
     var airplane = new app.Airplane({ id: this.model.get('airplane_id') });
+    console.log( this.model.get('airplane_id') );
+
     airplane.fetch().done( function () {
+      console.log(airplane)
+
       var rows = airplane.get("rows");
       var columns = airplane.get("columns");
       var $seats = $('#seats');
@@ -39,6 +43,9 @@ app.FlightView = Backbone.View.extend({
       }
       $seats.append(table); 
 
+
+
     });   
   }
+>>>>>>> 05790f5406be66f3d83318259c0b6d6921f184cb
 });
