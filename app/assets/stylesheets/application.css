@@ -13,27 +13,15 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< HEAD
 
-#main {
-=======
 html{
->>>>>>> 56d682b24a22800d94e2a60ba885460adb6fb200
   text-align: center;
 }
 
 #seats table{
   margin: 0px auto;
-<<<<<<< HEAD
-  width: 50%;
 }
 
-.seat td {
-  width: 50px;
-  height: 50px;
-}
-=======
-}
 nav li {
   list-style-type: none;
   display: inline;
@@ -54,4 +42,4 @@ nav li {
 
 
 
->>>>>>> 56d682b24a22800d94e2a60ba885460adb6fb200
+

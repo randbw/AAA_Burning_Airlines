@@ -45,12 +45,7 @@ app.FlightView = Backbone.View.extend({
          }
       }
       $seats.append($table); 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 56d682b24a22800d94e2a60ba885460adb6fb200
     });   
   },
 
