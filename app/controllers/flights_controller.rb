@@ -38,7 +38,7 @@ class FlightsController < ApplicationController
   def create
     @flight = Flight.new(flight_params)
     @flight.date = @flight.date.to_date.to_s(:db)
-    raise params.inspect
+    
     respond_to do |format|
       if @flight.save
         format.html { redirect_to root_path, notice: 'Flight was successfully created.' }
