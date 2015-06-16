@@ -1,9 +1,12 @@
-var app = app || {}
+var app = app || {};
 
-var test
 app.FlightView = Backbone.View.extend({
 
   el: '#main',
+
+  events: {
+    'click #seats tr td': 'bookSpot'
+  },
 
   render: function() {
     var flightTemplate = $('#flightTemplate').html();
@@ -11,7 +14,6 @@ app.FlightView = Backbone.View.extend({
     this.$el.html(flightHTML(this.model.toJSON()));
     view = this
     this.addTable();
-
   },
 
   addTable: function () {
@@ -28,18 +30,42 @@ app.FlightView = Backbone.View.extend({
       $table.append($tableBody)
         
       for (var i = 0; i < rows; i++){
-        var $tr = $('<tr/>')
-         $tableBody.append($tr);
+        var $tr = $('<tr/>');
+        $tableBody.append($tr);
          
          for (var j = 0; j < columns; j++){
             var $td = $('<td/>');
-            $td.attr('width','75');
+            $td.attr('width','75').addClass('available').attr('id','id' + i + '_' + j);
             $td.html("Cell " + i + "," + j);
-            $td.appendTo($tr)
+            $td.appendTo($tr);
          }
       }
       $seats.append($table); 
-
     });   
+  },
+
+  bookSpot: function(e) {
+    var id = $(e.toElement).attr('id');
+    console.log(id);
   }
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
