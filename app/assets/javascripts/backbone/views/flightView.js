@@ -1,5 +1,5 @@
 var app = app || {};
-
+var res
 app.FlightView = Backbone.View.extend({
 
   el: '#main',
@@ -48,7 +48,7 @@ app.FlightView = Backbone.View.extend({
 
     });   
   },
-
+  
   bookSpot: function(e) {
 
     // Retrieve row and column for reservation creation
@@ -61,7 +61,7 @@ app.FlightView = Backbone.View.extend({
     column = id.slice(indexOfUnderscore + 1,idLength);
     console.log(column);
 
-    var res = new app.Reservation({
+    res = new app.Reservation({
       row: row,
       column: column,
       flight_id: this.model.get('id'),

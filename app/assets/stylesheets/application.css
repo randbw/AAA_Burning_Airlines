@@ -38,8 +38,51 @@ nav li {
   top:0px;
 }
 
+#flights {
+  border:1px solid black;
+  width: 70%;
+}
+
+#flights li {
+  list-style-type: none;
+}
+
+h3 span {
+  font-size: 60%;
+}
+
+.flightView {
+  background-color: rgba(200, 80, 80, 0.5);
+  position: relative;
+  transition: color 1s, background-color 1s;
+}
+
+.flightView :hover {
+  background-color: rgba(200, 50, 50, 1);
+  color: white;
+  cursor: pointer;
+}
 
 
+.flightInfo {
+  display: inline-block;
+}
+
+.aleft {
+  position: absolute;
+  left: 20px;
+}
+
+.aright {
+  margin-left: 500px
+}
+
+#searchBar {
+  top: 70px;
+  position: fixed;
+  right:30px;
+
+}
 
 
 

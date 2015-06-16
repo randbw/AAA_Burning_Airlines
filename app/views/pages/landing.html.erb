@@ -2,21 +2,53 @@
 
   <div id="main"></div>
 
+  <div id="searchBar">
+    <form>
+      <div>
+        <label for="origin">Departing From:</label><br>
+        <select id="origin"><option value="None" selected>None</option>
+        <% Flight.pluck('Origin').uniq.each do |o| %>
+          <option value="<%= o %>" ><%= o %></option> 
+        <% end %>
+        </select>
+      </div>
+
+      <div>
+        <label for="destination">Destination:</label><br>
+        <select id="destination"><option value="None" selected>None</option>
+        <% Flight.pluck('destination').uniq.each do |o| %>
+          <option value="<%= o %>" ><%= o %></option> 
+        <% end %>
+        </select>
+      </div>
+
+      <div>
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" value="<%=Date.today%>"></input>
+      </div>
+
+      <button id="Search">Search</button>
+    </form>
+  </div>
 
   <script id="appTemplate" type="text/template">
-    <h2>Recent Flights</h2>
-    <ul id="flights"></ul>
+    
+    <ul id="flights"><h2 class="title">Flight List</h2></ul>
+
   </script>
 
  <script id="flightListTemplate" type="text/template">
-    <h3>{{ flight_number }}</h3>
-    <h3>{{ airplane_id }}</h3>
-    <h3>Origin: {{ origin }}</h3>
-    <h3>Destination: {{ destination }}</h3>
-    <h3>Date: {{ date }} </h3>
+  <div class="flightView">
+    <h3><div class="aleft flightInfo">{{ origin }}  <span> to </span>  {{ destination }} {{ date }}</div><div class="aright flightInfo"><span>Flight Number:  {{ flight_number }}</span></div></h3>
+    
+    </div>
   </script>
 
   <script id="flightTemplate" type="text/template">
     <h3>{{ flight_number }}</h3>
     <div id="seats"></div>
+    <script type="text/javascript" >
+var currentUser = <%= @current_user.id || 'null' %>;
 </script>
+</script>
+

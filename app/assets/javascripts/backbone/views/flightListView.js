@@ -19,4 +19,27 @@ app.FlightListView = Backbone.View.extend({
 
     app.router.navigate('flights/' + this.model.get('id'), true);
   }
+
 })
+
+var test
+$(document).ready(function() {
+$('#Search').on('click', function(e){
+    console.log('lol')
+    e.preventDefault();
+    console.log('lol')
+    var origin = $('#origin').val();
+    var destination = $('#destination').val();
+    var date = $('#date').val();
+     // Reset the form for re-use.
+
+    var flight = new app.Flight({
+      origin: origin,
+      destination: destination,
+      date: date
+    });
+    flight.fetch()
+    test = flight
+  })
+
+});
