@@ -55,23 +55,17 @@ app.FlightView = Backbone.View.extend({
     var id = $(e.toElement).attr('id');
     indexOfUnderscore = id.indexOf('_');
     indexOfIdEnd = 2;
-    row = id.slice(indexOfIdEnd,indexOfUnderscore);
+    row = parseInt(id.slice(indexOfIdEnd,indexOfUnderscore));
     idLength = id.length;
-    column = id.slice(indexOfUnderscore + 1,idLength);
-
-    // Need to get user_id. AJAX maybe?
-    // $.ajax({
-    //   url: 
-    // })
+    column = parseInt(id.slice(indexOfUnderscore + 1,idLength));
 
     res = new app.Reservation({
       row: row,
       column: column,
       flight_id: this.model.get('id'),
-      user_id: 0 // don't know how to get this yet
-    })
-
-
+      user_id: currentUser // gotten from script in landing
+    });
+    res.save();
   }
 
 });
