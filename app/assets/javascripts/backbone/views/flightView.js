@@ -1,53 +1,41 @@
-var app  = app || {}  
+var app = app || {}
 
 var test
 app.FlightView = Backbone.View.extend({
 
   el: '#main',
 
-  render:function() {
+  render: function() {
     var flightTemplate = $('#flightTemplate').html();
     var flightHTML = _.template(flightTemplate);
     this.$el.html(flightHTML(this.model.toJSON()));
     view = this
-    this.seats = new app.Seats({flight_id: this.model.get('id')});
-    this.seats.fetch().done(function(){
-    if (view.seats.length === 0)  {
-    for (var i = 0 ; i <= (view.model.toJSON().passengers); i+= 1) {
-    seatAssign = view.seatGen(i)
-    var seat = new app.Seat({
-      flight_id: view.model.get('id'), 
-      seatnum: seatAssign,
-      available: 'available'
-    });
-    seat.save()
-    view.seats.fetch()
-    }
-  };
-  })
-    
-     
+
   },
-
-
-  seatGen:function(num) {
-    alpha = ''
-    if (num % 6 == 0)  {
-      alpha = "h"
-    } else if (num % 5 == 0) {
-      alpha = "g"
-    } else if (num % 4 == 0){
-      alpha = "f"
-    } else if (num % 3 == 0){
-      alpha = "c"
-    } else if (num % 2 == 0){
-      alpha = "b"
-    } else {
-      alpha = "a"
+  tablecreate: function () {
+    var seats = $('#seats');
+    var rows = '';
+    var tbl = document.createElement('table');
+    tbl.style.width = '100%';
+    tbl.setAttribute('border','1');
+    var tbdy = document.createElement('tbody');
+    for (var i=0; i<3; i++) {
+        var tr = document.createElement('tr');
+        for ( var j=0; j<2; j++) {
+            if ( i==2 && j==1 ) {
+                    break
+                     } else {
+            var td = document.createElement( 'td' );
+            td.appendChild( document.createTextNode( '\u0020' ) );
+            i==1 && j==1?td.setAttribute('rowSpan','2'):null;
+            tr.appendChild(td)
+            }
+        }
+        tbdy.appendChild(tr);
     }
-    numeric = String((Math.floor(num/6)))
-    return alpha + numeric
-  }
+    tbl.appendChild(tbdy);
+    body.appendChild(tbl)
+}
 
   // events: {
   //   'click button': 'submitSeat'
