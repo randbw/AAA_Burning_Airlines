@@ -1,9 +1,35 @@
 // Place all the styles related to the flights controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 .available {
-  background-color: green;
+  background-image:url("available.jpg"); 
+  height:50px;
+  width:50px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 60%;
+  color: green;
 }
-.unavailable {
-  background-color: red;
+
+.unavailable{ 
+  background-image:url("taken.jpg");  
+  height:50px;
+  width:50px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 60%;
+  color: red;
 }
+
+.child{
+  background-image:url("child.jpg");  
+  height:50px;
+  width:50px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 60%;
+  color: blue;
+}
+
