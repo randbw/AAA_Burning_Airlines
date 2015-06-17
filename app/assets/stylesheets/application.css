@@ -19,6 +19,14 @@ html{
   text-align: center;
 }
 
+body {
+  background-color: #EFEFEF;
+}
+
+#main{
+  background-color: #EFEFEF;
+}
+
 * {
   font-family: 'Lato', sans-serif;
 }
@@ -30,13 +38,18 @@ html{
 nav li {
   list-style-type: none;
   display: inline;
-  margin-right: 10px;
-
+  margin-right: 37px;
+}
+nav li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: white;
 }
 
 .navHead{
   height:50px;
-  background:#F0F0F0;     
+  background:rgba(200, 50, 50, 1);     
   border:1px solid #CCC;
   margin:0px auto;
   width:100%;
@@ -46,14 +59,16 @@ nav li {
 }
 
 #flights {
-  border:1px solid black;
   width: 70%;
   overflow: scroll;
+  height: 500px;
+  margin-left:70px;
 }
 
 #flights li {
   list-style-type: none;
 }
+
 
 h3 span {
   font-size: 60%;
