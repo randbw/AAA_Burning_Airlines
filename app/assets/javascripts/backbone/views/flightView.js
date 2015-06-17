@@ -86,7 +86,6 @@ app.FlightView = Backbone.View.extend({
         $(idFormat).attr('class','unavailable');
       }
     });
-    console.log(view);
   }
 
 });
