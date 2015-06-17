@@ -41,7 +41,7 @@ app.FlightView = Backbone.View.extend({
          for (var j = 0; j < columns; j++){
             var $td = $('<td/>');
             $td.attr('width','75').addClass('available').attr('id','id' + i + '_' + j);
-            $td.html("Cell " + i + "," + j);
+            $td.html(i + "abcdefghijklmnop"[j]);
             $td.appendTo($tr);
          }
       }
