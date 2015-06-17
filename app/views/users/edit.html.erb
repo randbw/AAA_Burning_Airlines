@@ -2,7 +2,7 @@
   <% @user.reservations.each do |r| %>
   <% flight = Flight.find r.flight_id %>
 
-  <h5>Flight number: <%= flight.flight_number %>  Origin: <%= flight.origin %> Destination: <%= flight.destination %> Seat: <%= r.row %><%= "abcdefghijklmnop".split('')[r.column]%>  <%= link_to('Cancel Booking', user_reservation_path(id: r.id, user_id: @user.id), :method => 'delete', :data => {:confirm => 'Are you sure you want to cancel?'} ) %></h5>
+  <h5>Flight number: <%= flight.flight_number %>  - Origin: <%= flight.origin %> - Destination: <%= flight.destination %> - Seat: <%= r.row %><%= "abcdefghijklmnop".split('')[r.column]%> --- <%= link_to('Cancel Booking', user_reservation_path(id: r.id, user_id: @user.id), :method => 'delete', :data => {:confirm => 'Are you sure you want to cancel?'} ) %></h5>
   
 <% end %>
 
