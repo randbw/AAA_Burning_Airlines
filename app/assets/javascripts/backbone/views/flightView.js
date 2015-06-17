@@ -82,6 +82,9 @@ app.FlightView = Backbone.View.extend({
     // Checks if seats are reserved
     checkReservations: function() {
         // Get the reservations in json format
+        if ($('.child').length > 10) {
+          $('#main').html('<img src="http://img3.wikia.nocookie.net/__cb20090110204728/uncyclopedia/images/7/7a/Explode_fire.gif">')
+        }
         $.ajax({
             url: '/flights/' + view.model.get('id') + '/reservations'
         }).done(function(data) { // Gets col and row of reservation and changes status
