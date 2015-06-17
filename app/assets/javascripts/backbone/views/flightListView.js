@@ -16,7 +16,7 @@ app.FlightListView = Backbone.View.extend({
   },
 
   search: function() {
-    $('#flights').html('')
+    
     var flightListTemplate = $('#flightListTemplate').html();
     var flightListHTML = _.template(flightListTemplate)
     this.$el.html(flightListHTML(this.model.toJSON()));
@@ -48,6 +48,7 @@ $('#Search').on('click', function(e){
       destination: destination,
       date: date
       });
+    $('#flights').html('')
     for (var i = 0; i < searched.length; i+=1){   
     var flightListView = new app.FlightListView({model: searched[i]});
     flightListView.search();
