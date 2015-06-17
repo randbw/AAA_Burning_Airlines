@@ -20,15 +20,14 @@ html{
 }
 
 body {
-  background-color: rgab(10,10,10,0.5);
-}
-
-#main{
-  background-color: #EFEFEF;
+  /*background-color: rgab(10,10,10,0.5);*/
+  background-image: url('navFire.jpg');
+  background-size: cover;
 }
 
 * {
   font-family: 'Lato', sans-serif;
+  color: white;
 }
 
 #seats table{
@@ -45,13 +44,17 @@ nav li a {
   font-weight: bold;
   font-size: 1.2em;
   color: white;
+  opacity: 0.8;
+}
+
+nav li a:hover {
+  font-size: 1.35em;
+  opacity: 1;
 }
 
 .navHead{
   height:50px;
-  background-image: url("navback.jpg");
-  opacity: 0.8;
-  border:1px solid #CCC;
+  background-color: rgba(255,255,255,0.2);
   margin:0px auto;
   width:100%;
   display: flex;
