@@ -79,6 +79,7 @@ app.FlightView = Backbone.View.extend({
     $.ajax({
       url: '/flights/' + view.model.get('id') + '/reservations'
     }).done( function (data) { // Gets col and row of reservation and changes status
+      $('.unavailable').attr('class','available')
       for (var i = 0; i < data.length; i += 1 ) {
         var row = data[i].row;
         var col = data[i].column;
@@ -86,6 +87,8 @@ app.FlightView = Backbone.View.extend({
         $(idFormat).attr('class','unavailable');
       }
     });
+    
+
     console.log(view);
   }
 
