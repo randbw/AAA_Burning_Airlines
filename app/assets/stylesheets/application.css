@@ -20,7 +20,7 @@ html{
 }
 
 body {
-  background-color: rgab(10,10,10,0.5);
+  background-color: #EFEFEF;
 }
 
 #main{
@@ -49,8 +49,8 @@ nav li a {
 
 .navHead{
   height:50px;
-  background-image: url("navback.jpg");
-  opacity: 0.8;
+  background-image: url('navback.jpg')
+  /*background:rgba(200, 50, 50, 1);     */
   border:1px solid #CCC;
   margin:0px auto;
   width:100%;
