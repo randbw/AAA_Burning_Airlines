@@ -31,7 +31,7 @@
     
   </div>
 
-<div class="reserveForm"><h5>Reservation for <%= @current_user.email %></h5>
+<div class="reserveForm">
     <input type="checkbox" id="child" name="child" >Child
     <div class="liveInfo"></div></div>
   <script id="appTemplate" type="text/template">
@@ -56,9 +56,9 @@
     <script type="text/javascript" >
     var currentUser = <%= @current_user.id %>; 
     </script>
-
+      
       <script id="reservationInfoTemplate" type="text/template">
-    
+    <h5>Reservation for <%= @current_user.email %></h5>
     
     <h5>Seats remaining: {{ remaining }}</h5>
     
