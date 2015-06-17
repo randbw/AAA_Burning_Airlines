@@ -36,8 +36,11 @@ app.FlightView = Backbone.View.extend({
 
             var $tableBody = $('<TBODY/>');
             $table.append($tableBody);
-            console.log(columns)
+            if (columns === 7 || columns === 9) {
+              columns +=2
+              } else {
             columns += 1
+            }
             exitcolumns = columns - 2
             rows = rows + (Math.floor(rows/10))
             for (var i = 0; i < rows; i++) {
@@ -54,16 +57,17 @@ app.FlightView = Backbone.View.extend({
               } else {
                 var $tr = $('<tr/>');
                 $tableBody.append($tr);
-              
+                console.log(columns)
                 for (var j = 0; j < columns ; j++) {
-                    if (j === Math.floor(columns/2)){
-                      console.log(j)
-                      console.log(Math.floor(columns/2))
+                    if (columns === 11 && (j === 3 || j === 7) || columns === 9 &&( j=== 2 || j === 6) ){
+                      $tr.append('<td class="aisle"></td>')
+                    }
+                    else if (j === Math.floor(columns/2) && columns !== 9 && columns !== 11){
                       $tr.append('<td class="aisle"></td>')
                       }else{
                     var $td = $('<td/>');
                     $td.attr('width', '75').addClass('available').attr('id', 'id' + i + '_' + j);
-                    $td.html(i + "abcdefghijklmnop" [j]);
+                    $td.html((i+ 1) + "abcdefghijklmnop" [j]);
                     $td.appendTo($tr);
                     }
                 }
