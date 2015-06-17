@@ -5,7 +5,7 @@ app.FlightView = Backbone.View.extend({
   el: '#main',
 
   events: {
-    'click #seats tr td': 'bookSpot'
+    'click #seats tr .available': 'bookSpot'
   },
 
   render: function() {
@@ -52,7 +52,6 @@ app.FlightView = Backbone.View.extend({
 
     // changes clicked cell's class to unavailable
     $('#'+ id).attr('class','unavailable');
-    // console.log($(e.toElement).attr('class'));
 
     // Retrieve row and column for reservation creation
     indexOfUnderscore = id.indexOf('_');
