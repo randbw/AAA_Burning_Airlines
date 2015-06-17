@@ -17,6 +17,7 @@ app.FlightView = Backbone.View.extend({
         view = this;
         this.addTable();
         this.checkReservations();
+        $('.reserveForm').css('display','block')
         setInterval(this.checkReservations, 1000);
     },
 
@@ -75,6 +76,7 @@ app.FlightView = Backbone.View.extend({
               
             }
             $seats.append($table);
+            
         });
 
     },
@@ -139,10 +141,9 @@ app.FlightView = Backbone.View.extend({
     },
 
     renderInfo: function(balance) {
-        $('.reserveForm').css('display', 'block')
         var infoTemplate = $('#reservationInfoTemplate').html();
         var infoHTML = _.template(infoTemplate);
-        $('.reserveForm').html(infoHTML({
+        $('.liveInfo').html(infoHTML({
             remaining: balance
         }));
     },
