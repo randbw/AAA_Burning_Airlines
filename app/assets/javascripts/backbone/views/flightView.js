@@ -108,7 +108,7 @@ app.FlightView = Backbone.View.extend({
 
     playBurn: function() {
         var audioElement = document.createElement('audio');
-        audioElement.setAttribute('src', 'assets/firestartstoburn.mp3');
+        audioElement.setAttribute('src', 'assets/Disco-Inferno.m4a');
         audioElement.setAttribute('autoplay', 'autoplay');
         //audioElement.load()
 
