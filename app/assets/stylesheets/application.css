@@ -26,6 +26,7 @@ nav li {
   list-style-type: none;
   display: inline;
   margin-right: 10px;
+
 }
 
 .navHead{
@@ -34,8 +35,9 @@ nav li {
   border:1px solid #CCC;
   margin:0px auto;
   width:100%;
-  
+  display: flex;
   top:0px;
+  justify-content: center;
 }
 
 #flights {
@@ -82,12 +84,7 @@ h3 span {
   position: fixed;
   right:30px;
 }
- #navHead{
-  margin-top: 60px;
- }
 
- h1 {
-  margin-top: 60px;
- }
+
 
 
