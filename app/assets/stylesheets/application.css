@@ -110,10 +110,11 @@ h3 span {
   right:30px;
 }
 
-#searchBar input {
+
+button {
   color:black;
 }
-button {
+input {
   color:black;
 }
 
