@@ -26,13 +26,11 @@
       </div>
 
       <button id="Search">Search</button>
+      
     </form>
-    <form>
-    <input type="checkbox" id="child" name="child" >Child<br>
-    </form>
-
+    
   </div>
-
+<div class="reserveForm"></div>
   <script id="appTemplate" type="text/template">
     
     <ul id="flights"><h2 class="title">Flight List</h2></ul>
@@ -41,7 +39,7 @@
 
  <script id="flightListTemplate" type="text/template">
   <div class="flightView">
-    <h3><div class="aleft flightInfo">{{ origin }}  <span> to </span>  {{ destination }} </div><div class="aright flightInfo"><span>{{ date }}&nbsp;&nbsp;|&nbsp;&nbsp;{{time.slice(11,-5)}}&nbsp;&nbsp;|&nbsp;&nbsp;Flight Number:  {{ flight_number }}</span></div></h3>
+    <h3><div class="aleft flightInfo">{{ origin }}  <span> to </span>  {{ destination }} </div><div class="aright flightInfo"><span>{{ date }}&nbsp;&nbsp;|&nbsp;&nbsp;{{time.slice(11,-8)}}&nbsp;&nbsp;|&nbsp;&nbsp;Flight Number:  {{ flight_number }}</span></div></h3>
     
     </div>
   </script>
@@ -50,6 +48,13 @@
     <h3>{{ flight_number }}</h3>
     <div id="seats"></div>
   </script>
+  <script id="reservationInfoTemplate" type="text/template">
+    
+    <h5>Reservation for <%= @current_user.email %></h5>
+    <input type="checkbox" id="child" name="child" >Child
+    <h5>Seats remaining: {{ remaining }}</h5>
+    
+      </script>
   <%if @current_user.present? %>
     <script type="text/javascript" >
     var currentUser = <%= @current_user.id %>; 

@@ -32,6 +32,7 @@ body {
 
 #seats table{
   margin: 0px auto;
+  border: none;
 }
 
 nav li {
@@ -105,9 +106,24 @@ h3 span {
 }
 
 #searchBar {
-  top: 70px;
   position: fixed;
-  right:30px;
+  top: 20%;
+  right:6%;
+  background-color: rgba(200,200,200,0.2);
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(255,255,255,0.6);
+}
+
+.reserveForm {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  background-color: rgba(200,200,200,0.2);
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(255,255,255,0.6);
 }
 
 

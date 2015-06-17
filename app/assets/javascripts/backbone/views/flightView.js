@@ -1,6 +1,7 @@
 var app = app || {};
 var res;
 var view;
+var total;
 app.FlightView = Backbone.View.extend({
 
     el: '#main',
@@ -23,11 +24,11 @@ app.FlightView = Backbone.View.extend({
         var airplane = new app.Airplane({
             id: this.model.get('airplane_id')
         });
-
         airplane.fetch().done(function() {
 
             var rows = airplane.get("rows");
             var columns = airplane.get("columns");
+            total = rows * columns
             var $seats = $('#seats');
 
             var $table = $('<table/>');
@@ -35,22 +36,45 @@ app.FlightView = Backbone.View.extend({
 
             var $tableBody = $('<TBODY/>');
             $table.append($tableBody);
-
+            console.log(columns)
+            columns += 1
+            exitcolumns = columns - 2
+            rows = rows + (Math.floor(rows/10))
             for (var i = 0; i < rows; i++) {
+              if ( i % 10 == 0 && i > 9) {
+                var $tr = $('<tr/>');
+                $tr.addClass('exit')
+                $tableBody.append($tr);
+                $tr.append('<td class="leftexit"></td></tr>')
+                for (var j = 0; j < exitcolumns; j++)
+                {
+                  $tr.append('<td class="filler"></td>')
+                }
+                $tr.append('<td class="rightexit"></td></tr>')
+              } else {
                 var $tr = $('<tr/>');
                 $tableBody.append($tr);
-
-                for (var j = 0; j < columns; j++) {
+              
+                for (var j = 0; j < columns ; j++) {
+                    if (j === Math.floor(columns/2)){
+                      console.log(j)
+                      console.log(Math.floor(columns/2))
+                      $tr.append('<td class="aisle"></td>')
+                      }else{
                     var $td = $('<td/>');
                     $td.attr('width', '75').addClass('available').attr('id', 'id' + i + '_' + j);
                     $td.html(i + "abcdefghijklmnop" [j]);
                     $td.appendTo($tr);
+                    }
                 }
+                }
+              
             }
             $seats.append($table);
         });
-    },
 
+    },
+    
     // Books a seat on click
     bookSpot: function(e) {
         // retrieve id of clicked cell
@@ -77,15 +101,17 @@ app.FlightView = Backbone.View.extend({
             child: childtrue // gotten from script in landing
         });
         res.save();
-        this.playBurn();
+
     },
 
     // Checks if seats are reserved
     checkReservations: function() {
-        // Get the reservations in json format
         if ($('.child').length > 10) {
             $('#main').html('<img src="http://img3.wikia.nocookie.net/__cb20090110204728/uncyclopedia/images/7/7a/Explode_fire.gif">')
+            this.playBurn();
         }
+        var balance
+        // Get the reservations in json format
         $.ajax({
             url: '/flights/' + view.model.get('id') + '/reservations'
         }).done(function(data) { // Gets col and row of reservation and changes status
@@ -101,8 +127,20 @@ app.FlightView = Backbone.View.extend({
                     $(idFormat).attr('class', 'unavailable');
                 }
             }
-
+            balance = total - data.length
+            view.renderInfo(balance);    
         })
+
+        
+    },
+
+    renderInfo: function(balance) {
+        $('.reserveForm').css('display', 'block')
+        var infoTemplate = $('#reservationInfoTemplate').html();
+        var infoHTML = _.template(infoTemplate);
+        $('.reserveForm').html(infoHTML({
+            remaining: balance
+        }));
     },
 
 
@@ -114,9 +152,9 @@ app.FlightView = Backbone.View.extend({
 
         $.get();
 
-        
-            audioElement.play();
-        
+
+        audioElement.play();
+
 
     }
 
