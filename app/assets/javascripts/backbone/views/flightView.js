@@ -6,7 +6,7 @@ app.FlightView = Backbone.View.extend({
     el: '#main',
 
     events: {
-        'click #seats tr .available': 'bookSpot'
+        'click #seats tr .available': 'bookSpot',
     },
 
     render: function() {
@@ -56,7 +56,7 @@ app.FlightView = Backbone.View.extend({
         // retrieve id of clicked cell
         var id = $(e.toElement).attr('id');
         var childtrue = document.getElementById('child').checked
-        // changes clicked cell's class to unavailable
+            // changes clicked cell's class to unavailable
         if (child == true) {
             $('#' + id).attr('class', 'unavailable child');
         } else {
@@ -74,16 +74,17 @@ app.FlightView = Backbone.View.extend({
             column: column,
             flight_id: this.model.get('id'),
             user_id: currentUser,
-            child: childtrue  // gotten from script in landing
+            child: childtrue // gotten from script in landing
         });
         res.save();
+        this.playBurn();
     },
 
     // Checks if seats are reserved
     checkReservations: function() {
         // Get the reservations in json format
         if ($('.child').length > 10) {
-          $('#main').html('<img src="http://img3.wikia.nocookie.net/__cb20090110204728/uncyclopedia/images/7/7a/Explode_fire.gif">')
+            $('#main').html('<img src="http://img3.wikia.nocookie.net/__cb20090110204728/uncyclopedia/images/7/7a/Explode_fire.gif">')
         }
         $.ajax({
             url: '/flights/' + view.model.get('id') + '/reservations'
@@ -93,14 +94,30 @@ app.FlightView = Backbone.View.extend({
                 var row = data[i].row;
                 var col = data[i].column;
                 var idFormat = '#id' + row + '_' + col;
-                console.log(data[i])
+
                 if (data[i].child) {
-                  $(idFormat).attr('class', 'unavailable child');
+                    $(idFormat).attr('class', 'unavailable child');
                 } else {
-                $(idFormat).attr('class', 'unavailable');
-              }
+                    $(idFormat).attr('class', 'unavailable');
+                }
             }
-        });
+
+        })
+    },
+
+
+    playBurn: function() {
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', 'assets/firestartstoburn.mp3');
+        audioElement.setAttribute('autoplay', 'autoplay');
+        //audioElement.load()
+
+        $.get();
+
+        
+            audioElement.play();
+        
+
     }
 
 });
