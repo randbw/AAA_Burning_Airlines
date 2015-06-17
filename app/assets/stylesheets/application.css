@@ -13,9 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic);
 
 html{
   text-align: center;
+}
+
+* {
+  font-family: 'Lato', sans-serif;
 }
 
 #seats table{

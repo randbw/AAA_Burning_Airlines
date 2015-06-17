@@ -1,5 +1,6 @@
 var app = app || {};
 var res;
+var view;
 app.FlightView = Backbone.View.extend({
 
   el: '#main',
@@ -14,6 +15,8 @@ app.FlightView = Backbone.View.extend({
     this.$el.html(flightHTML(this.model.toJSON()));
     view = this;
     this.addTable();
+    this.checkReservations();
+    setInterval(this.checkReservations,1000);
   },
 
   addTable: function () {
@@ -46,6 +49,7 @@ app.FlightView = Backbone.View.extend({
     });   
   },
   
+  // Books a seat on click
   bookSpot: function(e) {
     // retrieve id of clicked cell
     var id = $(e.toElement).attr('id');
@@ -67,6 +71,22 @@ app.FlightView = Backbone.View.extend({
       user_id: currentUser // gotten from script in landing
     });
     res.save();
+  },
+
+  // Checks if seats are reserved
+  checkReservations: function () {
+    // Get the reservations in json format
+    $.ajax({
+      url: '/flights/' + view.model.get('id') + '/reservations'
+    }).done( function (data) { // Gets col and row of reservation and changes status
+      for (var i = 0; i < data.length; i += 1 ) {
+        var row = data[i].row;
+        var col = data[i].column;
+        var idFormat = '#id' + row + '_' + col;
+        $(idFormat).attr('class','unavailable');
+      }
+    });
+    console.log(view);
   }
 
 });
